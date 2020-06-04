@@ -1,0 +1,35 @@
+env:
+  authService:
+    addr: auth-service
+    port: 8080
+
+authService:
+  terminationGracePeriodSeconds: 5
+    image:
+      repository: gcr.io/spitzkick-salon/auth-service
+      tag: latest
+      pullPolicy: IfNotPresent
+    ports:
+      containerPort: 8080
+    healthChecks:
+      readinessProbe:
+        periodSeconds: 5
+        exec:
+          probeBinaryPath: "/bin/grpc_health_probe"
+          probePort: 8080
+      livenessProbe:
+        periodSeconds: 5
+        exec:
+          probeBinaryPath: "/bin/grpc_health_probe"
+          probePort: 8080
+    resources:
+      requests:
+        cpu: 100m
+        memory: 220Mi
+      limits:
+        cpu: 200m
+        memory: 450Mi
+    service:
+      type: ClusterIP
+      name: grpc
+      port: 8080

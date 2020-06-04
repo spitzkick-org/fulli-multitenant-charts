@@ -1,0 +1,4 @@
+apiVersion: v2
+description: A Helm chart for Multi-tenant Microservice Deployment
+name: charts
+version: 0.1.0

@@ -4,7 +4,6 @@ env:
     port: 8080
 
 authService:
-  terminationGracePeriodSeconds: 5
     image:
       repository: gcr.io/spitzkick-salon/auth-service
       tag: latest

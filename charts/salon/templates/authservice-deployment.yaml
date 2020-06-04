@@ -17,13 +17,6 @@ spec:
           image: {{ printf "%s:%s" .Values.authService.image.repository .Values.authService.image.tag }}
           ports:
             - containerPort: {{ .Values.authService.ports.containerPort }}
-          readinessProbe:
-            periodSeconds: {{ .Values.authService.healthChecks.readinessProbe.periodSeconds }}
-            exec:
-              command: {{ printf "[%q, \"-addr=:%v\"]" .Values.authService.healthChecks.readinessProbe.exec.probeBinaryPath .Values.authService.healthChecks.readinessProbe.exec.probePort }}
-          livenessProbe:
-            exec:
-              command: {{ printf "[%q, \"-addr=:%v\"]" .Values.authService.healthChecks.livenessProbe.exec.probeBinaryPath .Values.authService.healthChecks.livenessProbe.exec.probePort }}
           resources:
             requests:
               cpu: {{ .Values.authService.resources.requests.cpu }}

@@ -11,17 +11,6 @@ authService:
       pullPolicy: IfNotPresent
     ports:
       containerPort: 8080
-    healthChecks:
-      readinessProbe:
-        periodSeconds: 5
-        exec:
-          probeBinaryPath: "/bin/grpc_health_probe"
-          probePort: 8080
-      livenessProbe:
-        periodSeconds: 5
-        exec:
-          probeBinaryPath: "/bin/grpc_health_probe"
-          probePort: 8080
     resources:
       requests:
         cpu: 100m

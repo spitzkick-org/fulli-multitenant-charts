@@ -5,7 +5,7 @@ env:
 
 authService:
     image:
-      repository: gcr.io/spitzkick-salon/auth-service
+      repository: gcr.io/spitzkick-salon/master-auth-service
       tag: latest
       pullPolicy: IfNotPresent
     ports:

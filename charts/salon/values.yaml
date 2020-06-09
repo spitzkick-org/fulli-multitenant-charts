@@ -7,9 +7,9 @@ authService:
     image:
       repository: gcr.io/spitzkick-salon/master-auth-service
       tag: latest
-      pullPolicy: IfNotPresent
     ports:
       containerPort: 8080
+
     resources:
       requests:
         cpu: 100m

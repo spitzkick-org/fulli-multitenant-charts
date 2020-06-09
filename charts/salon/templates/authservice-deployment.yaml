@@ -4,6 +4,7 @@ metadata:
   name: auth-service
   namespace: {{ .Release.Name }}
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: auth-service

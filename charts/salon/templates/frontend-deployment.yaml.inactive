@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
+          ports:
+          - containerPort: {{ .Values.frontend.ports.containerPort }}
+          env:
+          - name: AUTH_SERVICE_ADDR
+            value: {{ printf "%s.%s.svc.cluster.local:%v" .Values.env.authService.addr .Release.Name .Values.env.authService.port }}
+          - name: SALON_SERVICE_ADDR
+            value: {{ printf "%s.%s.svc.cluster.local:%v" .Values.env.salonService.addr .Release.Name .Values.env.salonService.port }}
+          resources:
+            requests:
+              cpu: {{ .Values.frontend.resources.requests.cpu }}
+              memory: {{ .Values.frontend.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.frontend.resources.limits.cpu }}
+              memory: {{ .Values.frontend.resources.limits.memory }}

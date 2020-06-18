@@ -17,24 +17,24 @@ global:
   replicas: 1
 
 authService:
-    image:
-      repository: gcr.io/spitzkick/master-auth-service
-      tag: latest
-      pullPolicy: Always
-    ports:
-      containerPort: 8080
+  image:
+    repository: gcr.io/spitzkick/master-auth-service
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 8080
 
-    resources:
-      requests:
-        cpu: 100m
-        memory: 220Mi
-      limits:
-        cpu: 200m
-        memory: 450Mi
-    service:
-      type: ClusterIP
-      name: grpc
-      port: 8080
+  resources:
+    requests:
+      cpu: 100m
+      memory: 220Mi
+    limits:
+      cpu: 200m
+      memory: 450Mi
+  service:
+    type: ClusterIP
+    name: grpc
+    port: 8080
 
 salonService:
   image:
@@ -75,3 +75,23 @@ salonServiceDb:
     type: ClusterIP
     name: grpc
     port: 5432
+
+frontend:
+  image:
+    repository: gcr.io/spitzkick/master-frontend
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 8080
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  service:
+    type: ClusterIP
+    name: http
+    port: 80

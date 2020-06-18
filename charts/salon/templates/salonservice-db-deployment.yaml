@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: database
-          image: {{ printf "%s:%s" .Values.salonService.image.repository .Values.salonService.image.tag }}
+          image: {{ printf "%s:%s" .Values.salonServiceDb.image.repository .Values.salonServiceDb.image.tag }}
           imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.salonServiceDb.ports.containerPort }}

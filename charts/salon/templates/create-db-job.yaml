@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: salon-db
+  namespace: {{ .Release.Name }}
 spec:
   ttlSecondsAfterFinished: 120
   template:

@@ -1,0 +1,33 @@
+#kubectl logs postgres-697b5bcf8b-2w6dv -p
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: salonservice-db
+  namespace: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: salonservice-db
+  replicas: {{ .Values.global.replicas }}
+  template:
+    metadata:
+      labels:
+        app: salonservice-db
+    spec:
+      containers:
+        - name: database
+          image: {{ printf "%s:%s" .Values.salonService.image.repository .Values.salonService.image.tag }}
+          imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.salonServiceDb.ports.containerPort }}
+          envFrom:
+            - configMapRef:
+                name: salonservice-db-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+              subPath: postgres
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: db-pv-claim

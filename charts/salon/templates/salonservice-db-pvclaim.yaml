@@ -1,9 +1,10 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pv-claim
+  name: db-pv-claim
+  namespace: {{ .Release.Name }}
   labels:
-    app: postgres
+    app: salonservice-db
 spec:
   accessModes:
     - ReadWriteOnce

@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-service
+  name: authservice
   namespace: {{ .Release.Name }}
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: auth-service
+      app: authservice
+  replicas: {{ .Values.global.replicas }}
   template:
     metadata:
       labels:
-        app: auth-service
+        app: authservice
     spec:
       containers:
-        - name: server
+        - name: api
           image: {{ printf "%s:%s" .Values.authService.image.repository .Values.authService.image.tag }}
+          imagePullPolicy: {{ .Values.authService.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.authService.ports.containerPort }}
           resources:

@@ -1,0 +1,16 @@
+#minikube service postgres-service-salon
+apiVersion: v1
+kind: Service
+metadata:
+  name: salonservice-db
+  namespace: {{ .Release.Name }}
+  labels:
+    app: salonservice-db
+spec:
+  type: {{ .Values.salonServiceDb.service.type }}
+  selector:
+    app: salonservice-db
+  ports:
+    - name: {{ .Values.salonServiceDb.service.name }}
+      port: {{ .Values.salonServiceDb.service.port }}
+      targetPort: {{ .Values.salonServiceDb.ports.containerPort }}

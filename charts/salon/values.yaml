@@ -1,11 +1,24 @@
 env:
   authService:
-    addr: auth-service
+    addr: authservice
     port: 8080
+  salonService:
+    addr: salonservice
+    port: 3000
+  salonServiceDb:
+    addr: salonservice-db
+    port: 5432
+    dbHost: postgres
+    dbName: postgresdb
+    dbUser: postgresadmin
+    dbPassword: admin123
+
+global:
+  replicas: 1
 
 authService:
     image:
-      repository: gcr.io/spitzkick-salon/master-auth-service
+      repository: gcr.io/spitzkick/master-auth-service
       tag: latest
       pullPolicy: Always
     ports:
@@ -22,3 +35,43 @@ authService:
       type: ClusterIP
       name: grpc
       port: 8080
+
+salonService:
+  image:
+    repository: gcr.io/spitzkick/master-salon
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 3000
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 220Mi
+    limits:
+      cpu: 200m
+      memory: 450Mi
+  service:
+    type: ClusterIP
+    name: grpc
+    port: 3000
+
+salonServiceDb:
+  image:
+    repository: postgres
+    tag: latest
+    pullPolicy: IfNotPresent
+  ports:
+    containerPort: 5432
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 220Mi
+    limits:
+      cpu: 200m
+      memory: 450Mi
+  service:
+    type: ClusterIP
+    name: grpc
+    port: 5432

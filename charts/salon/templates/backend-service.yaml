@@ -1,0 +1,13 @@
+#minikube service backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-public
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+  selector:
+    run: salon-backend

@@ -2,14 +2,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: salonservice-db
+  name: salonservice-db-service
   namespace: {{ .Release.Name }}
   labels:
-    app: salonservice-db
+    app: salonservice-db-service
+    stage: production
+    owner: spitzkick
 spec:
   type: {{ .Values.salonServiceDb.service.type }}
   selector:
     app: salonservice-db
+    stage: production
+    owner: spitzkick
   ports:
     - name: {{ .Values.salonServiceDb.service.name }}
       port: {{ .Values.salonServiceDb.service.port }}

@@ -1,17 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: salon-db
+  name: salonservice-db-creation-job
   namespace: {{ .Release.Name }}
 spec:
   ttlSecondsAfterFinished: 120
   template:
     spec:
       containers:
-        - name: secondb
+        - name: salonservice-db-creation-job-container
           image: bitnami/postgresql:latest
           command: ["createdb"]
-          args: ["-h","postgres", "-U", "postgresadmin", "salon" ]
+          args: ["-h","salonservice-db-service", "-U", "postgresadmin", "salon" ]
           env:
             - name: PGPASSWORD
               value: admin123

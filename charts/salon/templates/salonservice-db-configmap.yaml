@@ -11,7 +11,9 @@ metadata:
   name: salonservice-db-config
   namespace: {{ .Release.Name }}
   labels:
-    app: salonservice-db
+    app: salonservice-db-config
+    stage: production
+    owner: spitzkick
 data:
   POSTGRES_DB: {{ .Values.env.salonServiceDb.dbName }}
   POSTGRES_USER: {{ .Values.env.salonServiceDb.dbUser }}

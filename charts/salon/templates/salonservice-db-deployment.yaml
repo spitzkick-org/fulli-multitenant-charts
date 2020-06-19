@@ -7,15 +7,19 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: salonservice-db
+      app: salonservice-db-instance
+      stage: production
+      owner: spitzkick
   replicas: {{ .Values.global.replicas }}
   template:
     metadata:
       labels:
-        app: salonservice-db
+        app: salonservice-db-instance
+        stage: production
+        owner: spitzkick
     spec:
       containers:
-        - name: database
+        - name: salonservice-db
           image: {{ printf "%s:%s" .Values.salonServiceDb.image.repository .Values.salonServiceDb.image.tag }}
           imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
           ports:
@@ -25,9 +29,9 @@ spec:
                 name: salonservice-db-config
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgredb
+              name: salonservice-db-pv
               subPath: postgres
       volumes:
-        - name: postgredb
+        - name: salonservice-db-pv
           persistentVolumeClaim:
-            claimName: db-pv-claim
+            claimName: salonservice-db-pv-claim

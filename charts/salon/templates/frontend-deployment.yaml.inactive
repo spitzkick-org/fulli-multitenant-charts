@@ -7,6 +7,8 @@ spec:
   selector:
     matchLabels:
       app: frontend
+      stage: production
+      owner: spitzkick
   template:
     metadata:
       labels:

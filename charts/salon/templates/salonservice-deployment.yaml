@@ -4,21 +4,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  #Workloads
-  name: salonservice
+  #Name of the Workloads
+  name: salonservice-api
   namespace: {{ .Release.Name }}
+  labels:
+    app: salonservice-api
+    stage: production
+    owner: spitzkick
 spec:
   selector:
     matchLabels:
-      app: salonservice
+      #Get all Pods based on that label
+      app: salonservice-api-instance
+      stage: production
+      owner: spitzkick
   replicas: {{ .Values.global.replicas }}
   template:
     metadata:
       labels:
-        app: salonservice
+        #Labels of the single pod
+        app: salonservice-api-instance
+        stage: production
+        owner: spitzkick
     spec:
       containers:
-        - name: api
+        - name: salonservice-api-instance-container #Container name which is running in the Pod
           image: {{ printf "%s:%s" .Values.salonService.image.repository .Values.salonService.image.tag }}
           imagePullPolicy: {{ .Values.salonService.image.pullPolicy }}
           ports:

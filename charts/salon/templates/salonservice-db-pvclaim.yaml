@@ -1,10 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: db-pv-claim
+  name: salonservice-db-pv-claim
   namespace: {{ .Release.Name }}
   labels:
-    app: salonservice-db
+    app: salonservice-db-pv-claim
+    stage: production
+    owner: spitzkick
 spec:
   accessModes:
     - ReadWriteOnce

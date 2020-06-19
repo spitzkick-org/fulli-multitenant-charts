@@ -2,7 +2,15 @@ apiVersion: v1
 entries:
   salon:
   - apiVersion: v1
-    created: "2020-06-19T19:46:12.359432199Z"
+    created: "2020-06-19T19:50:39.861574248Z"
+    description: A Helm chart for Multi-tenant Microservice Deployment
+    digest: 51a9024f6ab4ee39116ffff6e42501fd79cdd0003b093cf29d63cc302a5ea322
+    name: salon
+    urls:
+    - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v1
+    created: "2020-06-19T19:50:39.860635144Z"
     description: A Helm chart for Multi-tenant Microservice Deployment
     digest: 34b3961b3f12cff6aa855cf61e608197fa4546950356f1908f466103d1cd28b2
     name: salon
@@ -10,7 +18,7 @@ entries:
     - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.8.tgz
     version: 0.1.8
   - apiVersion: v1
-    created: "2020-06-19T19:46:12.358772996Z"
+    created: "2020-06-19T19:50:39.859582941Z"
     description: A Helm chart for Multi-tenant Microservice Deployment
     digest: 8a9e639d19a90dfbc62f3b9334bc9c7204c3bf4849e578550a4a4b8135a04209
     name: salon
@@ -18,7 +26,7 @@ entries:
     - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.7.tgz
     version: 0.1.7
   - apiVersion: v1
-    created: "2020-06-19T19:46:12.358068693Z"
+    created: "2020-06-19T19:50:39.858648338Z"
     description: A Helm chart for Multi-tenant Microservice Deployment
     digest: c875c8bbc1286a8e0508374738cce033b9c387ba9eb3704a038d9b8141b76b9f
     name: salon
@@ -26,7 +34,7 @@ entries:
     - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.4.tgz
     version: 0.1.4
   - apiVersion: v1
-    created: "2020-06-19T19:46:12.357694191Z"
+    created: "2020-06-19T19:50:39.858164936Z"
     description: A Helm chart for Multi-tenant Microservice Deployment
     digest: 027b684c23285019ef0a1e8a28876af2d3056bef27b84e0ae5dbd7c0e7473bba
     name: salon
@@ -34,11 +42,11 @@ entries:
     - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v1
-    created: "2020-06-19T19:46:12.357297589Z"
+    created: "2020-06-19T19:50:39.857660934Z"
     description: A Helm chart for Multi-tenant Microservice Deployment
     digest: 579e7a4c665b816968d9b59bdb87ab65fb3599e937263b0a3fd480c25984a9ca
     name: salon
     urls:
     - https://spitzkick-org.github.io/fulli-multitenant-charts/salon-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-19T19:46:12.356412185Z"
+generated: "2020-06-19T19:50:39.856927932Z"

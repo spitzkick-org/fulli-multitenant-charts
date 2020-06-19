@@ -58,7 +58,7 @@ salonService:
 
 salonServiceDb:
   image:
-    repository: postgres
+    repository: gcr.io/spitzkick/postgres
     tag: latest
     pullPolicy: IfNotPresent
   ports:

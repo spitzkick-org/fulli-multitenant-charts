@@ -10,11 +10,11 @@ metadata:
     owner: spitzkick
 spec:
   type: {{ .Values.salonServiceDb.service.type }}
-  selector:
-    app: salonservice-db-instance
-    stage: production
-    owner: spitzkick
   ports:
     - name: {{ .Values.salonServiceDb.service.name }}
       port: {{ .Values.salonServiceDb.service.port }}
       targetPort: {{ .Values.salonServiceDb.ports.containerPort }}
+  selector:
+    app: salonservice-db-instance
+    stage: production
+    owner: spitzkick

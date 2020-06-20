@@ -5,11 +5,6 @@ metadata:
   name: salonservice-db
   namespace: {{ .Release.Name }}
 spec:
-  selector:
-    matchLabels:
-      app: salonservice-db-instance
-      stage: production
-      owner: spitzkick
   replicas: {{ .Values.global.replicas }}
   template:
     metadata:
@@ -19,7 +14,7 @@ spec:
         owner: spitzkick
     spec:
       containers:
-        - name: salonservice-db
+        - name: salonservice-db-instance-container
           image: {{ printf "%s:%s" .Values.salonServiceDb.image.repository .Values.salonServiceDb.image.tag }}
           imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
           ports:

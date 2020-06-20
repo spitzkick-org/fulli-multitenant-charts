@@ -8,8 +8,8 @@ env:
   salonServiceDb:
     addr: salonservice-db
     port: 5432
-    dbHost: postgres
-    dbName: postgresdb
+    dbHost: salonservice-db-service
+    dbName: postgres
     dbUser: postgresadmin
     dbPassword: admin123
 

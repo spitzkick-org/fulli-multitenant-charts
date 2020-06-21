@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: salonservice-dbabc
+  name: salonservice-db
   namespace: {{ .Release.Name }}
 spec:
   selector:

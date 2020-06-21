@@ -5,6 +5,11 @@ metadata:
   name: salonservice-dbabc
   namespace: {{ .Release.Name }}
 spec:
+  selector:
+    matchLabels:
+      app: salonservice-db-instance
+      stage: production
+      owner: spitzkick
   replicas: {{ .Values.global.replicas }}
   template:
     metadata:

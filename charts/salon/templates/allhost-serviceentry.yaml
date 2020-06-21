@@ -1,4 +1,3 @@
-#Routing
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
@@ -6,11 +5,17 @@ metadata:
   namespace: {{ .Release.Name }}
 spec:
   hosts:
-    - "*.{{ .Rlease.Name }}.svc.cluster.local"
-    ports:
+    - "*.{{ .Release.Name }}.svc.cluster.local"
+  ports:
+    - number: 80
+      name: http
+      protocol: HTTP
+    - number: 443
+      name: https
+      protocol: HTTPS
     - number: 3000
       name: http-salonservice-api-service
-      protocol: http
+      protocol: HTTP
     - number: 5432
       name: tcp-salonservice-db-service
-      protocol: tcp
+      protocol: TCP

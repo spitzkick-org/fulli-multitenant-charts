@@ -14,7 +14,6 @@ spec:
     - name: {{ .Values.salonServiceDb.service.name }}
       port: {{ .Values.salonServiceDb.service.port }}
       targetPort: {{ .Values.salonServiceDb.ports.containerPort }}
-      appProtocol: tcp
   selector:
     app: salonservice-db-instance
     stage: production

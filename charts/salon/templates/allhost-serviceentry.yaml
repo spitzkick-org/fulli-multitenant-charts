@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: {{ .Release.Name }}-allhosts-serviceentry
+  namespace: {{ .Release.Name }}
+spec:
+  hosts:
+    - "*.{{ .Rlease.Name }}.svc.cluster.local"
+    ports:
+    - number: 3000
+      name: http-salonservice-api-service
+      protocol: http
+    - number: 5432
+      name: tcp-salonservice-db-service
+      protocol: tcp

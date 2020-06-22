@@ -16,14 +16,6 @@ spec:
   selector:
     app: sptizkickpage
 ---
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: spitzkick-sptizkickpage
-  namespace: {{ .Release.Name }}
-  labels:
-    account: sptizkickpage
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -43,7 +35,6 @@ spec:
         app: sptizkickpage
         version: v1
     spec:
-      serviceAccountName: spitzkick-sptizkickpage
       containers:
         - name: sptizkickpage
           image: gcr.io/spitzkick/master-salon-frontend-minimal

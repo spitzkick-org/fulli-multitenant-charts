@@ -53,7 +53,7 @@ salonService:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: grpc
+    name: tcp
     port: 3000
 
 salonServiceDb:
@@ -73,7 +73,7 @@ salonServiceDb:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: grpc
+    name: tcp
     port: 5432
 
 frontend:

@@ -14,7 +14,7 @@ spec:
     - port: 9080
       name: http
   selector:
-    app: sptizkickpage
+    app: spitzkickpage
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -37,6 +37,6 @@ spec:
             prefix: /api/v1/products
       route:
         - destination:
-            host: spitzkickpage
+            host: sptizkickpage
             port:
               number: 9080

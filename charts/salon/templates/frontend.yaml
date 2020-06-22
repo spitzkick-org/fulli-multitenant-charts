@@ -11,7 +11,7 @@ metadata:
     service: sptizkickpage
 spec:
   ports:
-    - port: 9080
+    - port: 80
       name: http
   selector:
     app: spitzkickpage
@@ -42,7 +42,7 @@ spec:
           tag: latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9080
+            - containerPort: 80
           volumeMounts:
             - name: tmp
               mountPath: /tmp

@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sptizkickpage
+  name: spitzkickpage
   namespace: {{ .Release.Name }}
   labels:
     app: sptizkickpage
@@ -19,25 +19,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sptizkickpage-v1
+  name: spitzkickpage-v1
   namespace: {{ .Release.Name }}
   labels:
-    app: sptizkickpage
+    app: spitzkickpage
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sptizkickpage
+      app: spitzkickpage
       version: v1
   template:
     metadata:
       labels:
-        app: sptizkickpage
+        app: spitzkickpage
         version: v1
     spec:
       containers:
-        - name: sptizkickpage
+        - name: spitzkickpage
           image: gcr.io/spitzkick/master-salon-frontend-minimal
           tag: latest
           imagePullPolicy: IfNotPresent

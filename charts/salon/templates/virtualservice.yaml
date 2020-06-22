@@ -5,9 +5,9 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - {{ printf "%s.spicynoodle.xyz" .Release.Name }}
+    - {{ printf "%s.vicio.de" .Release.Name }}
   gateways:
-    - spicynoodle-gateway
+    - spitzkick-gateway
   http:
     - route:
         - destination:

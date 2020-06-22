@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   name: {{ .Release.Name }}
   labels:
-    istio-injection: disabled
+    istio-injection: enabled

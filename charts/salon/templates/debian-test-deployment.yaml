@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debian-test
+  namespace: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: debian-test
+      stage: production
+      owner: spitzkick
+  replicas: {{ .Values.global.replicas }}
+  template:
+    metadata:
+      labels:
+        app: debian-test
+        stage: production
+        owner: spitzkick
+    spec:
+      containers:
+        - name: debian-test-container
+          image: grc.io/spitzkick/debian:latest
+          imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
+          ports:
+            - containerPort: 4800

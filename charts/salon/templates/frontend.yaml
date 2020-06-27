@@ -12,12 +12,15 @@ metadata:
 spec:
   type: {{ .Values.frontend.service.type }}
   ports:
-    - name: {{ .Values.frontend.service.name }}
+    - name: tcp
       port: {{ .Values.frontend.service.type }}
   selector:
     app: spitzkickpage
     stage: production
     owner: spitzkick
+
+
+
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -96,7 +96,7 @@ frontend:
   service:
     type: ClusterIP
     name: http
-    port: 9080
+    port: 80
 
 busyBox:
   image:

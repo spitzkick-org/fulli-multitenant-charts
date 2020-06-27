@@ -20,20 +20,21 @@
 #      name: tcp-salonservice-db-service
 #      protocol: TCP
 #
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: vicio
-spec:
-  rules:
-    - host: vicio
-      http:
-        paths:
-          - path: /productpage
-            backend:
-              serviceName: spitzkickpage
-              servicePort: 80
-          - path: /static/*
-            backend:
-              serviceName: spitzkickpage
-                servicePort: 80
+
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: vicio
+#spec:
+#  rules:
+#    - host: vicio
+#      http:
+#        paths:
+#          - path: /productpage
+#            backend:
+#              serviceName: spitzkickpage
+#              servicePort: 80
+#          - path: /static/*
+#            backend:
+#              serviceName: spitzkickpage
+#                servicePort: 80

@@ -1,0 +1,38 @@
+#What Docker Image we are using and what is the Name of the Application
+#Furthermore you will define how many PODS you wanna have
+# kubectl apply -f .\backend-deployment.yaml -- Create the Workloads (Node with 3 Pods) Cluster must be available!
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #Name of the Workloads
+  name: busybox
+  namespace: {{ .Release.Name }}
+  labels:
+    app: busybox
+    stage: production
+    owner: spitzkick
+spec:
+  selector:
+    matchLabels:
+      #Get all Pods based on that label
+      app: busybox-instance
+      stage: production
+      owner: spitzkick
+  replicas: {{ .Values.global.replicas }}
+  template:
+    metadata:
+      labels:
+        #Labels of the single pod
+        app: busybox-instance
+        stage: production
+        owner: spitzkick
+    spec:
+      containers:
+        name: busybox-instance
+        image: {{ printf "%s:%s" .Values.busyBox.image.repository .Values.busyBox.image.tag }}
+          imagePullPolicy: {{ .Values.busyBox.image.pullPolicy }}
+        command:
+          sleep
+          "3600"
+        imagePullPolicy: Always
+        restartPolicy: Always

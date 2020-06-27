@@ -95,3 +95,9 @@ frontend:
     type: ClusterIP
     name: http
     port: 80
+
+busyBox:
+  image:
+    repository: gcr.io/spitzkick/busybox
+    tag: latest
+    pullPolicy: Always

@@ -10,11 +10,14 @@ metadata:
     app: sptizkickpage
     service: sptizkickpage
 spec:
+  type: {{ .Values.frontend.service.type }}
   ports:
-    - port: 80
-      name: http
+    - name: {{ .Values.frontend.service.name }}
+      port: {{ .Values.frontend.service.type }}
   selector:
     app: spitzkickpage
+    stage: production
+    owner: spitzkick
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -29,19 +32,21 @@ spec:
   selector:
     matchLabels:
       app: spitzkickpage
-      version: v1
+      stage: production
+      owner: spitzkick
   template:
     metadata:
       labels:
         app: spitzkickpage
-        version: v1
+        stage: production
+        owner: spitzkick
     spec:
       containers:
         - name: spitzkickpage
           image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.frontend.ports.containerPort }}
           volumeMounts:
             - name: tmp
               mountPath: /tmp

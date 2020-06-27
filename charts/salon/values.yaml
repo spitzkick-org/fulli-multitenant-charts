@@ -1,4 +1,7 @@
 env:
+  frontendService:
+    addr: frontendService
+    port: 9080
   authService:
     addr: authservice
     port: 8080
@@ -82,8 +85,7 @@ frontend:
     tag: latest
     pullPolicy: Always
   ports:
-    containerPort: 8080
-
+    containerPort: 80
   resources:
     requests:
       cpu: 100m
@@ -94,7 +96,7 @@ frontend:
   service:
     type: ClusterIP
     name: http
-    port: 80
+    port: 9080
 
 busyBox:
   image:

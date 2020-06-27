@@ -37,6 +37,6 @@ spec:
             prefix: /api/v1/products
       route:
         - destination:
-            host: spitzkick
+            host: spitzkickpage
             port:
               number: 80

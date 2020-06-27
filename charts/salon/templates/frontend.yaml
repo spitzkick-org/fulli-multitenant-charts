@@ -46,7 +46,7 @@ spec:
           image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.frontend.ports.containerPort }}
+            - containerPort: 80
           volumeMounts:
             - name: tmp
               mountPath: /tmp

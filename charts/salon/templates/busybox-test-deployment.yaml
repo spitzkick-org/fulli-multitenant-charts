@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: busybox-deployment
+  name: busybox
   namespace: {{ .Release.Name }}
   labels:
     app: busybox

@@ -29,10 +29,9 @@ spec:
     spec:
       containers:
         name: busybox-instance
-        image: {{ printf "%s:%s" .Values.busyBox.image.repository .Values.busyBox.image.tag }}
-          imagePullPolicy: {{ .Values.busyBox.image.pullPolicy }}
+        image: gcr.io/spitzkick/busybox
+          imagePullPolicy: Always
         command:
           sleep
           "3600"
-        imagePullPolicy: Always
         restartPolicy: Always

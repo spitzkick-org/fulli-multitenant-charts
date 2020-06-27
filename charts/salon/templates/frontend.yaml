@@ -13,7 +13,7 @@ spec:
   type: {{ .Values.frontend.service.type }}
   ports:
     - name: tcp
-      port: {{ .Values.frontend.service.type }}
+      port: {{ .Values.frontend.service.port }}
   selector:
     app: spitzkickpage
     stage: production

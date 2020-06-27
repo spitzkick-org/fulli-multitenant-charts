@@ -1,4 +1,4 @@
-#minikube service backend
+#minikube service backend test
 apiVersion: v1
 kind: Service
 metadata:

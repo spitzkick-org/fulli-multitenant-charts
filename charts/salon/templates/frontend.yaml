@@ -38,9 +38,8 @@ spec:
     spec:
       containers:
         - name: spitzkickpage
-          image: gcr.io/spitzkick/master-salon-frontend-minimal
-          tag: latest
-          imagePullPolicy: IfNotPresent
+          image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
             - containerPort: 80
           volumeMounts:

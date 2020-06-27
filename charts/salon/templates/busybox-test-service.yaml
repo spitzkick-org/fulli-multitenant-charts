@@ -14,6 +14,6 @@ spec:
     - name: tcp
       port: 4000
   selector:
-    app: busybox-instance
+    app: busybox
     stage: production
     owner: spitzkick

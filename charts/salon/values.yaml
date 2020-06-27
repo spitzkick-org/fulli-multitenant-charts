@@ -78,7 +78,7 @@ salonServiceDb:
 
 frontend:
   image:
-    repository: gcr.io/spitzkick/master-frontend
+    repository: gcr.io/spitzkick/master-salon-frontend-minimal
     tag: latest
     pullPolicy: Always
   ports:

@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - "*"
+    - "speedl.de"
   gateways:
     - spitzkick-gateway
   http:
@@ -27,7 +27,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - "*"
+    - "speedl.de"
   gateways:
     - spitzkick-gateway
   http:

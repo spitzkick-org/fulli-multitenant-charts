@@ -6,10 +6,20 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - {{ printf "*.speedl.de" .Release.Name }}
+    - "www.speedl.de"
+    - "speedl.de"
+    #- {{ printf ".speedl.de" .Release.Name }}
   gateways:
     - spitzkick-gateway
   http:
+    - match:
+          - uri:
+              prefix: /{{ printf "%s/app" .Release.Name }}
+      route:
+        - destination:
+            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+            port:
+              number: 80
     - match:
         - uri:
             prefix: /{{ printf "%s/api" .Release.Name }}

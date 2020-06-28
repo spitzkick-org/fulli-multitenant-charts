@@ -13,18 +13,17 @@ spec:
   http:
     - match:
           - uri:
-              prefix: /app
+              prefix: /{{ printf "%s/api" .Release.Name }}
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
             port:
               number: 80
-
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: salonservice-salonservice-ingress
+  name: {{ .Release.Name }}-salonservice-ingress
 spec:
   hosts:
     - "www.speedl.de"

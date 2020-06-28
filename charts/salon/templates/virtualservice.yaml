@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - "*.speedl.de"
+    - "www.speedl.de"
   gateways:
     - spitzkick-gateway
   http:
@@ -17,25 +17,5 @@ spec:
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
-            port:
-              number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: {{ .Release.Name }}-frontend-ingress
-  namespace: default
-spec:
-  hosts:
-    - "speedl.de"
-  gateways:
-    - spitzkick-gateway
-  http:
-    - match:
-        - uri:
-            prefix: /api
-      route:
-        - destination:
-            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
             port:
               number: 80

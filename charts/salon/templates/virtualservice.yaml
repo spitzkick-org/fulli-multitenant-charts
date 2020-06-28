@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - {{ printf "%s.vicio.de" .Release.Name }}
+    - {{ printf "%s.speedl.de" .Release.Name }}
   gateways:
     - spitzkick-gateway
   http:

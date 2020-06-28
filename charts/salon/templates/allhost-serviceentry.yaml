@@ -1,40 +1,21 @@
-#apiVersion: networking.istio.io/v1alpha3
-#kind: ServiceEntry
-#metadata:
-#  name: {{ .Release.Name }}-allhosts-serviceentry
-#  namespace: {{ .Release.Name }}
-#spec:
-#  hosts:
-#    - "*.{{ .Release.Name }}.svc.cluster.local"
-#  ports:
-#    - number: 80
-#     name: http
-#     protocol: HTTP
-#    - number: 443
-#      name: https
-#      protocol: HTTPS
-#    - number: 3000
-#      name: http-salonservice-api-service
-#      protocol: HTTP
-#    - number: 5432
-#      name: tcp-salonservice-db-service
-#      protocol: TCP
-#
-
-#apiVersion: extensions/v1beta1
-#kind: Ingress
-#metadata:
-#  name: vicio
-#spec:
-#  rules:
-#    - host: vicio
-#      http:
-#        paths:
-#          - path: /productpage
-#            backend:
-#              serviceName: spitzkickpage
-#              servicePort: 80
-#          - path: /static/*
-#            backend:
-#              serviceName: spitzkickpage
-#                servicePort: 80
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: {{ .Release.Name }}-allhosts-serviceentry
+  namespace: {{ .Release.Name }}
+spec:
+  hosts:
+    - "*.{{ .Release.Name }}.svc.cluster.local"
+  ports:
+    - number: 80
+     name: http
+     protocol: HTTP
+    - number: 443
+      name: https
+      protocol: HTTPS
+    - number: 3000
+      name: http-salonservice-api-service
+      protocol: HTTP
+    - number: 5432
+      name: tcp-salonservice-db-service
+      protocol: TCP

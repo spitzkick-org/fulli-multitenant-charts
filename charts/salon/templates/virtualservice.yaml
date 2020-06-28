@@ -13,7 +13,7 @@ spec:
   http:
     - match:
           - uri:
-              prefix: /{{ printf "%s/app" .Release.Name }}
+              prefix: /app
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
@@ -33,7 +33,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /{{ printf "%s/api" .Release.Name }}
+            prefix: /api
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

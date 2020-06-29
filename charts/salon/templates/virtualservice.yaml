@@ -7,7 +7,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - "speedl.de"
+    - "*"
   gateways:
     - spitzkick-gateway
   http:
@@ -16,12 +16,4 @@ spec:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
             port:
               number: 80
-    - match:
-        - uri:
-            prefix: /{{ .Release.Name }}/api
-            ignoreUriCase: true
-            rewrite:
-              uri: /api
-      route:
-        - destination:
-            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+    

@@ -23,9 +23,9 @@ spec:
               number: 80
     - match:
         - uri:
-            prefix: "/api/"
+            prefix: "/api"
           rewrite:
-            uri: "/"
+            uri: " "
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

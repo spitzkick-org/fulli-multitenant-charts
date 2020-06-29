@@ -14,7 +14,7 @@ spec:
     - name: "Frontend-Routes"
       match:
         - uri:
-            prefix: /{{ .Release.Name }}/app
+            regex: /{{ .Release.Name }}/app
             ignoreUriCase: true
             rewrite:
               uri: "/app"

@@ -14,9 +14,6 @@ spec:
     - match:
         - uri:
             prefix: /{{ .Release.Name }}/app
-            ignoreUriCase: true
-            rewrite:
-              uri: "/"
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

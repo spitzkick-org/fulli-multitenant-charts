@@ -17,7 +17,10 @@ spec:
         route:
           - destination:
               host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-    - route:
+    - match:
+        - uri:
+            prefix: /
+        route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
             port:

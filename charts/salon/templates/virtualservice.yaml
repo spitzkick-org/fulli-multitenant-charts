@@ -15,7 +15,8 @@ spec:
         - uri:
             regex: /{{ .Release.Name }}/app
             ignoreUriCase: true
-            rewrite: /app
+            rewrite:
+              uri: "/app"
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
@@ -23,7 +24,8 @@ spec:
         - uri:
             regex: /{{ .Release.Name }}/api
             ignoreUriCase: true
-            rewrite: /api
+            rewrite:
+              uri: "/api"
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

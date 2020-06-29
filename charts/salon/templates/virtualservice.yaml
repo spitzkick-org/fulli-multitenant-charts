@@ -11,7 +11,8 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
-    - match:
+    - name: "Frontend-Routes"
+      match:
         - uri:
             regex: /{{ .Release.Name }}/app
             ignoreUriCase: true
@@ -20,7 +21,9 @@ spec:
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
-    - match:
+
+    - name: "Salonservice-Routes"
+      match:
         - uri:
             regex: /{{ .Release.Name }}/api
             ignoreUriCase: true

@@ -13,9 +13,9 @@ spec:
   http:
     - match:
        - uri:
-           prefix: "/app/"
+           prefix: {{ printf "%s/app" .Release.Name }}
          rewrite:
-           uri: "/"
+           uri: " "
       route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

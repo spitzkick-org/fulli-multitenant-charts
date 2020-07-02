@@ -11,7 +11,7 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
-  - name: "salonservice"
+  - name: "salonservice-api"
       match:
         - uri:
             prefix: "/salonservice"

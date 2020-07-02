@@ -57,7 +57,7 @@ salonService:
   service:
     type: ClusterIP
     name: tcp
-    port: 3000
+    port: 3001
 
 salonServiceDb:
   image:

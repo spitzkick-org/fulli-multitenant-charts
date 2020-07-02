@@ -14,14 +14,12 @@ spec:
     - match:
         - uri:
             regex: /api
-            ignoreUriCase: true
         route:
           - destination:
               host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
     - match:
         - uri:
             regex: /
-            ignoreUriCase: true
         route:
           - destination:
               host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

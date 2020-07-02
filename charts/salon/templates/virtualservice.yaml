@@ -15,7 +15,7 @@ spec:
     match:
     - uri:
       prefix: "/salon"
-    rewrite:
+    redirect:
       uri: "/api"
     route:
       - destination:

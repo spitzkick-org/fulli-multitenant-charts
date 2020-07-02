@@ -3,7 +3,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ .Release.Name }}-frontend-ingress
+  name: {{ .Release.Name }}-vs-ingress
   namespace: default
 spec:
   hosts:
@@ -11,8 +11,12 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
-    - route:
+  - name: "salonservice"
+      match:
+        - uri:
+            prefix: "/salonservice"
+      rewrite:
+        uri: "/api"
+      route:
         - destination:
-            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
-            port:
-              number: 80
+            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

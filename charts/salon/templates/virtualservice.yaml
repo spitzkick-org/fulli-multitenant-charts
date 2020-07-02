@@ -11,7 +11,7 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
-    - match
+    - match:
           name: "SalonApi-Routes"
           match:
             - uri:
@@ -20,7 +20,7 @@ spec:
           route:
             - destination:
                 host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-    - match
+    - match:
         name: "SalonApi-Routes"
         match:
           - uri:

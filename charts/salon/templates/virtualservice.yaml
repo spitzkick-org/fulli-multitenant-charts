@@ -16,7 +16,7 @@ spec:
             prefix: "/api"
       route:
         - destination:
-            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
 
 
 

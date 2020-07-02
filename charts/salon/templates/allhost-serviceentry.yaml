@@ -14,6 +14,7 @@ spec:
       name: https
       protocol: HTTPS
     - number: 3000
+      host: salonservice-api-servicem
       name: tcp-salonservice-api-service
       protocol: TCP
 #    - number: 80

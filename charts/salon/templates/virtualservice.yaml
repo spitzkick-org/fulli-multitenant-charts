@@ -11,6 +11,9 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
+    - match:
+        - uri:
+            prefix: "/api"
     - route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

@@ -13,7 +13,12 @@ spec:
   http:
     - match:
         - uri:
-            exact: "/api"
-    route:
-      - destination:
-          host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+            prefix: /api
+      route:
+        - destination:
+            port:
+              number: 80
+            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+
+
+

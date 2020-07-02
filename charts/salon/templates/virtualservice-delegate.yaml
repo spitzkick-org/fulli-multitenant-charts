@@ -12,14 +12,14 @@ spec:
     - spitzkick-gateway
   http:
     - match:
-      - uri:
-          prefix: "/"
+        - uri:
+            prefix: "/"
       delegate:
       name: {{ .Release.Name }}-frontend-ingress
       namespace: default
     - match:
-      - uri:
-          prefix: "/api"
+        - uri:
+            prefix: "/api"
       delegate:
         name: {{ .Release.Name }}-api-ingress
         namespace: default

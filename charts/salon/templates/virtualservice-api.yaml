@@ -6,6 +6,8 @@ metadata:
   name: {{ .Release.Name }}-api-ingress
   namespace: default
 spec:
+  hosts:
+    - {{ printf "%s.speedl.de" .Release.Name }}
   http:
     - route:
         - destination:

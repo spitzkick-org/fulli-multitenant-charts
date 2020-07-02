@@ -14,14 +14,8 @@ spec:
     - match:
         - uri:
             prefix: "/api"
+        - uri:
+            prefix: "/salons"
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-    - match:
-        - uri:
-            prefix: "/salons"
-        route:
-          - destination:
-              host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-
-

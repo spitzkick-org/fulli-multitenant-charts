@@ -1,5 +1,3 @@
-#kubectl get vs <vs-named>
-#- {{ printf ".speedl.de" .Release.Name }}
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -7,13 +5,13 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - {{ printf "%s.speedl.de" .Release.Name }}
+    - {{ printf "%s.%s" .Release.Name .Values.global.domain }}
   gateways:
     - spitzkick-gateway
   http:
     - match:
         - uri:
-            prefix: "/salon"
+            prefix: {{ .Values.env.salonService.apiEntryPoint }}
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

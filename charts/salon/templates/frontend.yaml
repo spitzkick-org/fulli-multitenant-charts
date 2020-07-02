@@ -1,6 +1,3 @@
-##################################################################################################
-# Productpage services test
-##################################################################################################
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,15 +9,13 @@ metadata:
 spec:
   type: {{ .Values.frontend.service.type }}
   ports:
-    - name: tcp
+    - name: {{ .Values.frontend.service.name }}
       port: {{ .Values.frontend.service.port }}
+      targetPort: {{ .Values.frontend.ports.containerPort }}
   selector:
     app: spitzkickpage
     stage: production
     owner: spitzkick
-
-
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -31,7 +26,7 @@ metadata:
     app: spitzkickpage
     version: v1
 spec:
-  replicas: 1
+  replicas: {{ .Values.global.replicas }}
   selector:
     matchLabels:
       app: spitzkickpage
@@ -49,11 +44,15 @@ spec:
           image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.frontend.ports.containerPort }}
+          env:
+            - name: AUTH_SERVICE_ADDR
+              value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.env.salonService.apiEntryPoint }}
+            - name: SALON_SERVICE_ADDR
+              value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.global.domain .Values.env.authService.apiEntryPoint }}
           volumeMounts:
             - name: tmp
               mountPath: /tmp
       volumes:
         - name: tmp
           emptyDir: {}
----

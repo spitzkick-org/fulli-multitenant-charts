@@ -1,6 +1,23 @@
-#What Docker Image we are using and what is the Name of the Application
-#Furthermore you will define how many PODS you wanna have
-# kubectl apply -f .\backend-deployment.yaml -- Create the Workloads (Node with 3 Pods) Cluster must be available!
+apiVersion: v1
+kind: Service
+metadata:
+  name: salonservice-api-service
+  namespace: {{ .Release.Name }}
+  labels:
+    app: salonservice-api-service
+    stage: production
+    owner: spitzkick
+spec:
+  type: {{ .Values.salonService.service.type }}
+  ports:
+    - name: {{ .Values.salonService.service.name }}
+      port: {{ .Values.salonService.service.port }}
+      targetPort: {{ .Values.salonService.ports.containerPort }}
+  selector:
+    app: salonservice-api-instance
+    stage: production
+    owner: spitzkick
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

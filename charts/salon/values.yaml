@@ -4,20 +4,23 @@ env:
     port: 9080
   authService:
     addr: authservice
+    apiEntryPoint: /auth
     port: 8080
   salonService:
     addr: salonservice
+    apiEntryPoint: /salon
     port: 3000
   salonServiceDb:
     addr: salonservice-db
     port: 5432
     dbHost: salonservice-db-service
-    dbName: postgres
+    dbName: salon
     dbUser: postgresadmin
     dbPassword: admin123
 
 global:
   replicas: 1
+  domain: speedl.de
 
 authService:
   image:
@@ -36,7 +39,7 @@ authService:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: grpc
+    name: tcp
     port: 8080
 
 salonService:
@@ -61,7 +64,7 @@ salonService:
 
 salonServiceDb:
   image:
-    repository: gcr.io/spitzkick/postgres
+    repository: bitnami/postgresql
     tag: latest
     pullPolicy: IfNotPresent
   ports:
@@ -95,11 +98,5 @@ frontend:
       memory: 128Mi
   service:
     type: ClusterIP
-    name: http
+    name: tcp
     port: 80
-
-busyBox:
-  image:
-    repository: gcr.io/spitzkick/busybox
-    tag: latest
-    pullPolicy: Always

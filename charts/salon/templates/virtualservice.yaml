@@ -11,19 +11,17 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
-        - name: "SalonApi-Routes"
-          match:
+        - match:
             - uri:
                 prefix: /api
                 ignoreUriCase: true
-          route:
-            - destination:
-                host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-        - name: "SalonApi-Routes"
-        match:
+              route:
+                - destination:
+                    host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+        - match:
           - uri:
               prefix: /
               ignoreUriCase: true
-        route:
-          - destination:
-              host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+            route:
+              - destination:
+                  host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

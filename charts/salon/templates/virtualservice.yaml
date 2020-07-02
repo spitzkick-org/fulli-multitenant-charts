@@ -13,12 +13,9 @@ spec:
   http:
     - match:
         - uri:
-            prefix: "/api"
+            prefix: "/api/salons"
         - uri:
-            prefix: "/salons"
+            exact: "/salons"
       route:
         - destination:
-            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-    - route:
-      - destination:
-          host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+            host: spitzkickpage

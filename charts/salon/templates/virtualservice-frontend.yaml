@@ -10,3 +10,26 @@
 #    - route:
 #        - destination:
 #            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: spitzkickpage
+spec:
+  hosts:
+    - spitzkickpage
+  http:
+    - route:
+        - destination:
+            host: spitzkickpage
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: salonservice-api-service
+spec:
+  hosts:
+    - salonservice-api-service
+  http:
+    - route:
+        - destination:
+            host: salonservice-api-service

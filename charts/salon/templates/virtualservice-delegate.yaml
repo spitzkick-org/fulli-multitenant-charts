@@ -3,7 +3,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ .Release.Name }}-frontend-ingress
+  name: {{ .Release.Name }}-SpitzkickEntryPoint-ingress
   namespace: default
 spec:
   hosts:

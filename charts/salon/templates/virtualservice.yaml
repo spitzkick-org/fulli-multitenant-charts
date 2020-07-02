@@ -15,8 +15,8 @@ spec:
       - uri:
           exact: "/salons"
     - match:
-        - uri:
-            exact: "/api"
+      - uri:
+          exact: "/api"
     route:
       - destination:
           host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}

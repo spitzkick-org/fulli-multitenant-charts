@@ -16,10 +16,10 @@ spec:
         prefix: "/"
       delegate:
       name: {{ .Release.Name }}-frontend-ingress
-      namespace: {{ .Release.Name }}
+      namespace: default
     - match:
         - uri:
             prefix: "/api"
       delegate:
         name: {{ .Release.Name }}-api-ingress
-        namespace: {{ .Release.Name }}
+        namespace: default

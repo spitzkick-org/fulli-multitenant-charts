@@ -10,5 +10,3 @@ spec:
     - route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
-            port:
-              number: 3001

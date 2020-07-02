@@ -1,12 +1,12 @@
 #kubectl get vs <vs-name>
 #- {{ printf ".speedl.de" .Release.Name }}
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: {{ .Release.Name }}-frontend-ingress
-  namespace: default
-spec:
-  http:
-    - route:
-        - destination:
-            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: {{ .Release.Name }}-frontend-ingress
+#  namespace: default
+#spec:
+#  http:
+#    - route:
+#        - destination:
+#            host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

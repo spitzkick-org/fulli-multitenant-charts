@@ -1,4 +1,4 @@
-#kubectl get vs <vs-name>
+#kubectl get vs <vs-named>
 #- {{ printf ".speedl.de" .Release.Name }}
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService

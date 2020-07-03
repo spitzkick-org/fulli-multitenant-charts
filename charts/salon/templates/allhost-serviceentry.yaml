@@ -18,8 +18,8 @@ spec:
       name: tcp-salonservice-api-service
       protocol: TCP
     - number: 5432
-      host: salonservice-api-service
-      name: tcp-salonservice-api-service
+      host: salonservice-db-service
+      name: tcp-salonservice-db-service
       protocol: TCP
 #    - number: 80
 #     name: http

@@ -39,7 +39,7 @@ authService:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: TCP
+    name: tcp-authservice
     port: 8080
 
 salonService:
@@ -59,7 +59,7 @@ salonService:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: TCP
+    name: tcp-salonservice
     port: 3000
 
 salonServiceDb:
@@ -79,7 +79,7 @@ salonServiceDb:
       memory: 450Mi
   service:
     type: ClusterIP
-    name: TCP
+    name: tcp-salondbservice
     port: 5432
 
 frontend:
@@ -98,5 +98,5 @@ frontend:
       memory: 128Mi
   service:
     type: ClusterIP
-    name: TCP
+    name: tcp-frontend
     port: 80

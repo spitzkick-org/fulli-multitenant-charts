@@ -29,7 +29,9 @@ metadata:
     owner: spitzkick
 data:
   POSTGRESQL_DATABASE: {{ .Values.env.salonServiceDb.dbName }}
-  POSTGRESQL_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
+  POSTGRESQL_USERNAME: {{ .Values.env.salonServiceDb.dbUser }}
+  POSTGRESQL_POSTGRES_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
+  #POSTGRESQL_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

@@ -24,7 +24,7 @@ global:
 
 authService:
   image:
-    repository: gcr.io/spitzkick/master-auth-service
+    repository: gcr.io/spitzkick-281209/master-auth-service
     tag: latest
     pullPolicy: Always
   ports:
@@ -44,7 +44,7 @@ authService:
 
 salonService:
   image:
-    repository: gcr.io/spitzkick/master-salon
+    repository: gcr.io/spitzkick-281209/master-salon
     tag: latest
     pullPolicy: Always
   ports:
@@ -84,7 +84,7 @@ salonServiceDb:
 
 frontend:
   image:
-    repository: gcr.io/spitzkick/master-salon-frontend-minimal
+    repository: gcr.io/spitzkick-281209/master-salon-frontend-minimal
     tag: latest
     pullPolicy: Always
   ports:

@@ -4,8 +4,8 @@ metadata:
   name: spitzkickpage
   namespace: {{ .Release.Name }}
   labels:
-    app: sptizkickpage
-    service: sptizkickpage
+    app: spitzkickpage
+    service: spitzkickpage
 spec:
   type: {{ .Values.frontend.service.type }}
   ports:

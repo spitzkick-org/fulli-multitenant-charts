@@ -1,0 +1,19 @@
+#minikube service backend test
+apiVersion: v1
+kind: Service
+metadata:
+  name: busybox-service
+  namespace: {{ .Release.Name }}
+  labels:
+    app: busybox-service
+    stage: production
+    owner: spitzkick
+spec:
+  type: {{ .Values.salonService.service.type }}
+  ports:
+    - name: tcp
+      port: 4000
+  selector:
+    app: busybox
+    stage: production
+    owner: spitzkick

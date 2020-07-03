@@ -9,6 +9,12 @@ spec:
   gateways:
     - spitzkick-gateway
   http:
+    - match:
+        - uri:
+            prefix: {{ .Values.env.salonService.apiEntryPoint }}
+      route:
+        - destination:
+            host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
     - route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

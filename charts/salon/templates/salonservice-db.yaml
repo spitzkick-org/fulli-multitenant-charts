@@ -29,7 +29,6 @@ metadata:
     owner: spitzkick
 data:
   POSTGRESQL_DATABASE: {{ .Values.env.salonServiceDb.dbName }}
-  POSTGRESQL_USERNAME: {{ .Values.env.salonServiceDb.dbUser }}
   POSTGRESQL_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
 ---
 apiVersion: v1

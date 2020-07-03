@@ -16,7 +16,7 @@ env:
     dbHost: salonservice-db-service
     dbName: salon
     dbUser: postgresadmin
-    dbPassword: admin123
+    dbPassword: postgres
 
 global:
   replicas: 1

@@ -17,6 +17,18 @@ spec:
     stage: production
     owner: spitzkick
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-frontend-config
+  namespace: development
+data:
+  app.config.json: |-
+    {
+      "apiUrl": {{ printf "%s" .Release.Name  }},
+      "apiPort": "80",
+    }
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

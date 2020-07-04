@@ -1,13 +1,13 @@
 env:
   frontendService:
-    addr: frontendService
-    port: 9080
+    addr: spitzkickpage
+    port: 80
   authService:
     addr: authservice
     apiEntryPoint: /auth
     port: 8080
   salonService:
-    addr: salonservice
+    addr: salonservice-api-service
     apiEntryPoint: /salon
     port: 3000
   salonServiceDb:
@@ -17,6 +17,10 @@ env:
     dbName: salon
     dbUser: postgresadmin
     dbPassword: postgres
+  appointmentService:
+    addr: appointment-api-service
+    apiEntryPoint: /appointment
+    port: 3100
 
 global:
   replicas: 1
@@ -81,6 +85,26 @@ salonServiceDb:
     type: ClusterIP
     name: tcp-salondbservice
     port: 5432
+
+appointmentService:
+  image:
+    repository: gcr.io/spitzkick/master-appointment
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 3000
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 220Mi
+    limits:
+      cpu: 200m
+      memory: 450Mi
+  service:
+    type: ClusterIP
+    name: tcp-appointmentservice
+    port: 3100
 
 frontend:
   image:

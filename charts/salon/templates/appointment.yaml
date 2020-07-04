@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: appointment-api-service
+  namespace: {{ .Release.Name }}
+  labels:
+    app: appointment-api-service
+    stage: production
+    owner: spitzkick
+spec:
+  type: {{ .Values.appointmentService.service.type }}
+  ports:
+    - name: {{ .Values.appointmentService.service.name }}
+      port: {{ .Values.appointmentService.service.port }}
+      targetPort: {{ .Values.appointmentService.ports.containerPort }}
+  selector:
+    app: appointment-api-instance
+    stage: production
+    owner: spitzkick
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #Name of the Workloads
+  name: appointment-api
+  namespace: {{ .Release.Name }}
+  labels:
+    app: appointment-api
+    stage: production
+    owner: spitzkick
+spec:
+  selector:
+    matchLabels:
+      #Get all Pods based on that label
+      app: appointment-api-instance
+      stage: production
+      owner: spitzkick
+  replicas: {{ .Values.global.replicas }}
+  template:
+    metadata:
+      labels:
+        #Labels of the single pod
+        app: appointment-api-instance
+        stage: production
+        owner: spitzkick
+    spec:
+      containers:
+        - name: appointment-api-instance-container #Container name which is running in the Pod
+          image: {{ printf "%s:%s" .Values.appointmentService.image.repository .Values.appointmentService.image.tag }}
+          imagePullPolicy: {{ .Values.appointmentService.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.appointmentService.ports.containerPort }}
+          env:
+            - name: POSTGRES_USER
+              value: {{ .Values.env.salonServiceDb.dbUser }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.env.salonServiceDb.dbPassword }}
+            - name: POSTGRES_HOST
+              value: {{ .Values.env.salonServiceDb.dbHost }}

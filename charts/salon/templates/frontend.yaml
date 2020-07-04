@@ -23,7 +23,7 @@ metadata:
   name: {{ .Release.Name }}-frontend-config
   namespace: {{ .Release.Name }}
 data:
-  app.config.json: |-
+  config.json: |-
     {
       "apiUrl": {{ printf "%s" .Release.Name  }},
       "apiPort": "80",
@@ -65,6 +65,11 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+            - name: {{ .Release.Name }}-frontend-volume
+                mountPath: /usr/share/nginx/html/assets/
       volumes:
         - name: tmp
           emptyDir: {}
+        - name: {{ .Release.Name }}-frontend-volume
+            configMap:
+              name: {{ .Release.Name }}-frontend-config

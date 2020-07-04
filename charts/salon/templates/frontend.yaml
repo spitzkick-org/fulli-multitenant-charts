@@ -25,8 +25,8 @@ metadata:
 data:
   config.json: |-
     {
-      "apiUrl": {{ printf "'%s.%s'" .Release.Name .Values.global.domain }},
-      "apiPort": "80"
+      'apiUrl': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }},
+      'apiPort': "80"
     }
 
 ---

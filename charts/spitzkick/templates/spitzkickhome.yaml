@@ -48,5 +48,3 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
-            - name: spitzkickhome-frontend-volume
-              mountPath: /usr/share/nginx/html/assets/

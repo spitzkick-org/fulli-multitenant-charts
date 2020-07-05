@@ -45,8 +45,3 @@ spec:
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.frontend.ports.containerPort }}
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
-            - name: spitzkickhome-frontend-volume
-              mountPath: /usr/share/nginx/html/assets/

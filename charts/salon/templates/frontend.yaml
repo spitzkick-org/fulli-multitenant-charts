@@ -64,13 +64,9 @@ spec:
             - name: SALON_SERVICE_ADDR
               value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.global.domain .Values.env.authService.apiEntryPoint }}
           volumeMounts:
-            - name: tmp
-              mountPath: /tmp
             - name: {{ .Release.Name }}-frontend-volume
               mountPath: /usr/share/nginx/html/assets/
       volumes:
-        - name: tmp
-          emptyDir: {}
         - name: {{ .Release.Name }}-frontend-volume
           configMap:
             name: {{ .Release.Name }}-frontend-config

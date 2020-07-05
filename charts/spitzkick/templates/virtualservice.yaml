@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: spitzkickhome-vs-ingress
-  namespace: {{ .Release.Name }}-vs-ingress
+  name: {{ .Release.Name }}-vs-ingress
+  namespace: default
 spec:
   hosts:
     - {{ printf "www.%s" .Values.global.domain }}

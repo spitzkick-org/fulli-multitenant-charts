@@ -108,7 +108,7 @@ appointmentService:
 
 frontend:
   image:
-    repository: gcr.io/spitzkick/master-salon-frontend-minimal
+    repository: gcr.io/spitzkick/master-usa-frontend
     tag: latest
     pullPolicy: Always
   ports:

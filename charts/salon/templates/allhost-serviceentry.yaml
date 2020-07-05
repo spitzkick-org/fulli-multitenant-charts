@@ -14,8 +14,12 @@ spec:
       name: https
       protocol: HTTPS
     - number: 3001
-      host: salonservice-api-servicem
+      host: salonservice-api-service
       name: tcp-salonservice-api-service
+      protocol: TCP
+    - number: 5432
+      host: salonservice-db-service
+      name: tcp-salonservice-db-service
       protocol: TCP
 #    - number: 80
 #     name: http

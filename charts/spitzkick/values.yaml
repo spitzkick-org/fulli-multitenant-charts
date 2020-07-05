@@ -1,0 +1,52 @@
+env:
+  authService:
+    addr: authservice
+    apiEntryPoint: /auth
+    port: 8080
+  frontendService:
+    addr: spitzkickhome
+    port: 80
+
+global:
+  replicas: 1
+  domain: speedl.de
+
+authService:
+  image:
+    repository: gcr.io/spitzkick/master-auth-service
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 8080
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 220Mi
+    limits:
+      cpu: 200m
+      memory: 450Mi
+  service:
+    type: ClusterIP
+    name: tcp-authservice
+    port: 8080
+
+
+frontend:
+  image:
+    repository: gcr.io/spitzkick/master-spitzkick-home
+    tag: latest
+    pullPolicy: Always
+  ports:
+    containerPort: 80
+  resources:
+    requests:
+      cpu: 100m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  service:
+    type: ClusterIP
+    name: tcp-spitzkickhome
+    port: 80

@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Release.Name }}-vs-ingress
+  namespace: default
+spec:
+  hosts:
+    - {{ printf "www.%s" .Values.global.domain }}
+  gateways:
+    - spitzkick-gateway
+  http:
+    - match:
+        - uri:
+            prefix: {{ .Values.env.authService.apiEntryPoint }}
+      route:
+        - destination:
+            host: {{ printf "authservice.%s.svc.cluster.local" .Release.Name }}
+    - route:
+        - destination:
+            host: {{ printf "spitzkickhome.%s.svc.cluster.local" .Release.Name }}
+

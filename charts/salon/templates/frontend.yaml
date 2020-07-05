@@ -4,8 +4,8 @@ metadata:
   name: spitzkickpage
   namespace: {{ .Release.Name }}
   labels:
-    app: sptizkickpage
-    service: sptizkickpage
+    app: spitzkickpage
+    service: spitzkickpage
 spec:
   type: {{ .Values.frontend.service.type }}
   ports:
@@ -16,6 +16,19 @@ spec:
     app: spitzkickpage
     stage: production
     owner: spitzkick
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-frontend-config
+  namespace: {{ .Release.Name }}
+data:
+  config.json: |-
+    {
+      'apiUrl': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }},
+      'apiPort': "80"
+    }
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,8 +64,9 @@ spec:
             - name: SALON_SERVICE_ADDR
               value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.global.domain .Values.env.authService.apiEntryPoint }}
           volumeMounts:
-            - name: tmp
-              mountPath: /tmp
+            - name: {{ .Release.Name }}-frontend-volume
+              mountPath: /usr/share/nginx/html/assets/config
       volumes:
-        - name: tmp
-          emptyDir: {}
+        - name: {{ .Release.Name }}-frontend-volume
+          configMap:
+            name: {{ .Release.Name }}-frontend-config

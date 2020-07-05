@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spitzkickhome
+  namespace: {{ .Release.Name }}
+  labels:
+    app: spitzkickhome
+    service: spitzkickhome
+spec:
+  type: {{ .Values.frontend.service.type }}
+  ports:
+    - name: {{ .Values.frontend.service.name }}
+      port: {{ .Values.frontend.service.port }}
+      targetPort: {{ .Values.frontend.ports.containerPort }}
+  selector:
+    app: spitzkickhome
+    stage: production
+    owner: spitzkick
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spitzkickhome
+  namespace: {{ .Release.Name }}
+  labels:
+    app: spitzkickhome
+    version: v1
+spec:
+  replicas: {{ .Values.global.replicas }}
+  selector:
+    matchLabels:
+      app: spitzkickhome
+      stage: production
+      owner: spitzkick
+  template:
+    metadata:
+      labels:
+        app: spitzkickhome
+        stage: production
+        owner: spitzkick
+    spec:
+      containers:
+        - name: spitzkickhome
+          image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.frontend.ports.containerPort }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+            - name: spitzkickhome-frontend-volume
+              mountPath: /usr/share/nginx/html/assets/

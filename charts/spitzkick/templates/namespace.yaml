@@ -1,0 +1,7 @@
+#Configure the Namespace Template
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    istio-injection: disabled

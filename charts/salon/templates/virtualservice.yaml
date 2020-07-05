@@ -15,6 +15,12 @@ spec:
       route:
         - destination:
             host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+    - match:
+        - uri:
+            prefix: {{ .Values.env.appointmentService.apiEntryPoint }}
+      route:
+        - destination:
+            host: {{ printf "appointment-api-service.%s.svc.cluster.local" .Release.Name }}
     - route:
         - destination:
             host: {{ printf "spitzkickpage.%s.svc.cluster.local" .Release.Name }}

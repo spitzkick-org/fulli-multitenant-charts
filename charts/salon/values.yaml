@@ -19,7 +19,7 @@ env:
     dbPassword: postgres
   appointmentService:
     addr: appointment-api-service
-    apiEntryPoint: /appointment
+    apiEntryPoint: /appointments
     port: 3100
 
 global:

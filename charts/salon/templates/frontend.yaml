@@ -27,7 +27,7 @@ data:
     {
       'apiUrl': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }},
       'apiPort': "80",
-      'tenant': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }}
+      'tenantName': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }}
     }
 
 ---

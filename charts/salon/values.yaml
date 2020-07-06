@@ -9,6 +9,7 @@ env:
   salonService:
     addr: salonservice-api-service
     apiEntryPoint: /salon
+    apiEntryPoint2: /service
     port: 3000
   salonServiceDb:
     addr: salonservice-db

@@ -11,6 +11,12 @@ spec:
   http:
     - match:
         - uri:
+            prefix: {{ .Values.env.salonService.apiEntryPoint2 }}
+        route:
+          - destination:
+              host: {{ printf "salonservice-api-service.%s.svc.cluster.local" .Release.Name }}
+    - match:
+        - uri:
             prefix: {{ .Values.env.salonService.apiEntryPoint }}
       route:
         - destination:

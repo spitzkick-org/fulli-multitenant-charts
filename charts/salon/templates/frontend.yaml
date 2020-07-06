@@ -62,7 +62,7 @@ spec:
             - name: AUTH_SERVICE_ADDR
               value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.env.salonService.apiEntryPoint }}
             - name: SALON_SERVICE_ADDR
-              value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.global.domain .Values.env.authService.apiEntryPoint }}
+              value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.env.authService.apiEntryPoint }}
           volumeMounts:
             - name: {{ .Release.Name }}-frontend-volume
               mountPath: /usr/share/nginx/html/assets/config

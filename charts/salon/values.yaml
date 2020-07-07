@@ -15,7 +15,7 @@ env:
     port: 5432
     dbHost: salonservice-db-service
     dbName: salon
-    dbUser: postgresadmin
+    dbUser: postgres
     dbPassword: postgres
   appointmentService:
     addr: appointment-api-service

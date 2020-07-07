@@ -26,7 +26,8 @@ data:
   config.json: |-
     {
       'apiUrl': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }},
-      'apiPort': "80"
+      'apiPort': "80",
+      'tenantName': {{ printf "'%s.%s'" .Release.Name .Values.global.domain }}
     }
 
 ---

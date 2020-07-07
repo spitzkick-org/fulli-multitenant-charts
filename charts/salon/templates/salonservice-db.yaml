@@ -29,7 +29,7 @@ metadata:
     owner: spitzkick
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi

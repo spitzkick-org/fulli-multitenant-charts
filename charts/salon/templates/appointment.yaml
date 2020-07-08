@@ -61,4 +61,4 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: bitnami-postgresql-creds
-                  key: POSTGRESQL_POSTGRES_PASSWORD
+                  key: POSTGRESQL_PASSWORD

@@ -71,9 +71,11 @@ spec:
           env:
             - name: POSTGRESQL_DATABASE
               value: "salon"
-          envFrom:
-            - secretRef:
-                name: bitnami-postgresql-creds
+            - name: POSTGRESQL_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: bitnami-postgresql-creds
+                    key: POSTGRESQL_PASSWORD
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: salonservice-db-pv

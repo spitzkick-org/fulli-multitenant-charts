@@ -13,7 +13,7 @@ global:
 
 authService:
   image:
-    repository: gcr.io/spitzkick/master-auth-service
+    repository: gcr.io/vicio-281511/master-auth-service
     tag: latest
     pullPolicy: Always
   ports:
@@ -34,7 +34,7 @@ authService:
 
 frontend:
   image:
-    repository: gcr.io/spitzkick/master-spitzkick-home
+    repository: gcr.io/vicio-281511/master-spitzkick-home
     tag: latest
     pullPolicy: Always
   ports:

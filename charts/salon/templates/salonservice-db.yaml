@@ -19,21 +19,6 @@ spec:
     owner: spitzkick
 ---
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: salonservice-db-config
-  namespace: {{ .Release.Name }}
-  labels:
-    app: salonservice-db-config
-    stage: production
-    owner: spitzkick
-data:
-  POSTGRESQL_DATABASE: {{ .Values.env.salonServiceDb.dbName }}
-  POSTGRESQL_USERNAME: {{ .Values.env.salonServiceDb.dbUser }}
-  POSTGRESQL_POSTGRES_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
-  POSTGRESQL_PASSWORD: {{ .Values.env.salonServiceDb.dbPassword }}
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: salonservice-db-pv-claim
@@ -75,8 +60,8 @@ spec:
           ports:
             - containerPort: {{ .Values.salonServiceDb.ports.containerPort }}
           envFrom:
-            - configMapRef:
-                name: salonservice-db-config
+            - secretRef:
+                name: bitnami-postgresql-creds
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: salonservice-db-pv

@@ -51,9 +51,11 @@ spec:
           ports:
             - containerPort: {{ .Values.appointmentService.ports.containerPort }}
           env:
-            - name: POSTGRES_USER
-              value: {{ .Values.env.salonServiceDb.dbUser }}
-            - name: POSTGRES_PASSWORD
-              value: {{ .Values.env.salonServiceDb.dbPassword }}
-            - name: POSTGRES_HOST
+            - name: DB_HOST
               value: {{ .Values.env.salonServiceDb.dbHost }}
+            - name: DB_DATABASE
+              value: {{ .Values.env.salonServiceDb.dbName }}
+            - name: DB_USERNAME
+              value: {{ .Values.env.salonServiceDb.dbUser }}
+            - name: DB_PASSWORD
+              value: {{ .Values.env.salonServiceDb.dbPassword }}

@@ -16,7 +16,6 @@ env:
     dbHost: salonservice-db-service
     dbName: salon
     dbUser: postgres
-    dbPassword: postgres
   appointmentService:
     addr: appointment-api-service
     apiEntryPoint: /appointment
@@ -28,7 +27,7 @@ global:
 
 authService:
   image:
-    repository: gcr.io/spitzkick-281209/master-auth-service
+    repository: gcr.io/vicio-281511/master-auth-service
     tag: latest
     pullPolicy: Always
   ports:
@@ -48,7 +47,7 @@ authService:
 
 salonService:
   image:
-    repository: gcr.io/spitzkick-281209/master-salon
+    repository: gcr.io/vicio-281511/master-salon
     tag: latest
     pullPolicy: Always
   ports:
@@ -88,7 +87,7 @@ salonServiceDb:
 
 appointmentService:
   image:
-    repository: gcr.io/spitzkick-281209/master-appointment
+    repository: gcr.io/vicio-281511/master-appointment
     tag: latest
     pullPolicy: Always
   ports:
@@ -108,7 +107,7 @@ appointmentService:
 
 frontend:
   image:
-    repository: gcr.io/spitzkick-281209/master-salon-frontend-minimal
+    repository: gcr.io/vicio-281511/master-usa-frontend
     tag: latest
     pullPolicy: Always
   ports:

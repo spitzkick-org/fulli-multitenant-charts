@@ -34,6 +34,15 @@ spec:
     requests:
       storage: 5Gi
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bitnami-postgresql-creds
+  namespace: {{ .Release.Name }}
+data:
+  POSTGRESQL_PASSWORD: {{ randAlphaNum 20 }}
+  POSTGRESQL_POSTGRES_PASSWORD: {{ randAlphaNum 20 }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -59,6 +68,9 @@ spec:
           imagePullPolicy: {{ .Values.salonServiceDb.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.salonServiceDb.ports.containerPort }}
+          env:
+            - name: POSTGRESQL_DATABASE
+              value: "salon"
           envFrom:
             - secretRef:
                 name: bitnami-postgresql-creds

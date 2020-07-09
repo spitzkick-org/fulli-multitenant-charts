@@ -4,13 +4,13 @@ metadata:
   name: authservice
   namespace: {{ .Release.Name }}
 spec:
-  type: {{ .Values.auth-service.service.type }}
+  type: {{ .Values.authService.service.type }}
   selector:
     app: authservice
   ports:
-    - name: {{ .Values.auth-service.service.name }}
-      port: {{ .Values.auth-service.service.port }}
-      targetPort: {{ .Values.auth-service.ports.containerPort }}
+    - name: {{ .Values.authService.service.name }}
+      port: {{ .Values.authService.service.port }}
+      targetPort: {{ .Values.authService.ports.containerPort }}
 ---
 {{/*apiVersion: networking.istio.io/v1alpha3*/}}
 {{/*kind: ServiceEntry*/}}
@@ -64,14 +64,14 @@ spec:
     spec:
       containers:
         - name: api
-          image: {{ printf "%s:%s" .Values.auth-service.image.repository .Values.auth-service.image.tag }}
-          imagePullPolicy: {{ .Values.auth-service.image.pullPolicy }}
+          image: {{ printf "%s:%s" .Values.authService.image.repository .Values.authService.image.tag }}
+          imagePullPolicy: {{ .Values.authService.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.auth-service.ports.containerPort }}
+            - containerPort: {{ .Values.authService.ports.containerPort }}
           resources:
             requests:
-              cpu: {{ .Values.auth-service.resources.requests.cpu }}
-              memory: {{ .Values.auth-service.resources.requests.memory }}
+              cpu: {{ .Values.authService.resources.requests.cpu }}
+              memory: {{ .Values.authService.resources.requests.memory }}
             limits:
-              cpu: {{ .Values.auth-service.resources.limits.cpu }}
-              memory: {{ .Values.auth-service.resources.limits.memory }}
+              cpu: {{ .Values.authService.resources.limits.cpu }}
+              memory: {{ .Values.authService.resources.limits.memory }}

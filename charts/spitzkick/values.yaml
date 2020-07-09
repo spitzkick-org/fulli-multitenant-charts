@@ -11,7 +11,7 @@ global:
   replicas: 1
   domain: speedl.de
 
-auth-service:
+authService:
   image:
     repository: gcr.io/vicio-281511/master-auth-service
     tag: latest
@@ -32,7 +32,7 @@ auth-service:
     port: 8080
 
 
-spitzkick-home:
+frontend:
   image:
     repository: gcr.io/vicio-281511/master-spitzkick-home
     tag: latest

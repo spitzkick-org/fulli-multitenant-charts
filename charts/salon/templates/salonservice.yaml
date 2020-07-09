@@ -8,11 +8,11 @@ metadata:
     stage: production
     owner: spitzkick
 spec:
-  type: {{ .Values.salon.service.type }}
+  type: {{ .Values.salonService.service.type }}
   ports:
-    - name: {{ .Values.salon.service.name }}
-      port: {{ .Values.salon.service.port }}
-      targetPort: {{ .Values.salon.ports.containerPort }}
+    - name: {{ .Values.salonService.service.name }}
+      port: {{ .Values.salonService.service.port }}
+      targetPort: {{ .Values.salonService.ports.containerPort }}
   selector:
     app: salonservice-api-instance
     stage: production
@@ -46,10 +46,10 @@ spec:
     spec:
       containers:
         - name: salonservice-api-instance-container #Container name which is running in the Pod
-          image: {{ printf "%s:%s" .Values.salon.image.repository .Values.salon.image.tag }}
-          imagePullPolicy: {{ .Values.salon.image.pullPolicy }}
+          image: {{ printf "%s:%s" .Values.salonService.image.repository .Values.salonService.image.tag }}
+          imagePullPolicy: {{ .Values.salonService.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.salon.ports.containerPort }}
+            - containerPort: {{ .Values.salonService.ports.containerPort }}
           env:
             - name: DB_HOST
               value: {{ .Values.env.salonServiceDb.dbHost }}

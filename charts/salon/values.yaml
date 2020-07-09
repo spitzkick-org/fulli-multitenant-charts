@@ -25,7 +25,7 @@ global:
   replicas: 1
   domain: speedl.de
 
-auth-service:
+authService:
   image:
     repository: gcr.io/vicio-281511/master-auth-service
     tag: latest
@@ -45,7 +45,7 @@ auth-service:
     name: tcp-authservice
     port: 8080
 
-salon:
+salonService:
   image:
     repository: gcr.io/vicio-281511/master-salon
     tag: latest
@@ -85,7 +85,7 @@ salonServiceDb:
     name: tcp-salondbservice
     port: 5432
 
-appointment:
+appointmentService:
   image:
     repository: gcr.io/vicio-281511/master-appointment
     tag: latest
@@ -105,7 +105,7 @@ appointment:
     name: tcp-appointmentservice
     port: 3100
 
-usa-frontend:
+frontend:
   image:
     repository: gcr.io/vicio-281511/master-usa-frontend
     tag: latest

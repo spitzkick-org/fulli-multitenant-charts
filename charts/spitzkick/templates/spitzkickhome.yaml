@@ -7,11 +7,11 @@ metadata:
     app: spitzkickhome
     service: spitzkickhome
 spec:
-  type: {{ .Values.frontend.service.type }}
+  type: {{ .Values.spitzkick-home.service.type }}
   ports:
-    - name: {{ .Values.frontend.service.name }}
-      port: {{ .Values.frontend.service.port }}
-      targetPort: {{ .Values.frontend.ports.containerPort }}
+    - name: {{ .Values.spitzkick-home.service.name }}
+      port: {{ .Values.spitzkick-home.service.port }}
+      targetPort: {{ .Values.spitzkick-home.ports.containerPort }}
   selector:
     app: spitzkickhome
     stage: production
@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
         - name: spitzkickhome
-          image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          image: {{ printf "%s:%s" .Values.spitzkick-home.image.repository .Values.spitzkick-home.image.tag }}
+          imagePullPolicy: {{ .Values.spitzkick-home.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.frontend.ports.containerPort }}
+            - containerPort: {{ .Values.spitzkick-home.ports.containerPort }}

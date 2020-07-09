@@ -7,11 +7,11 @@ metadata:
     app: spitzkickpage
     service: spitzkickpage
 spec:
-  type: {{ .Values.frontend.service.type }}
+  type: {{ .Values.usa-frontend.service.type }}
   ports:
-    - name: {{ .Values.frontend.service.name }}
-      port: {{ .Values.frontend.service.port }}
-      targetPort: {{ .Values.frontend.ports.containerPort }}
+    - name: {{ .Values.usa-frontend.service.name }}
+      port: {{ .Values.usa-frontend.service.port }}
+      targetPort: {{ .Values.usa-frontend.ports.containerPort }}
   selector:
     app: spitzkickpage
     stage: production
@@ -55,10 +55,10 @@ spec:
     spec:
       containers:
         - name: spitzkickpage
-          image: {{ printf "%s:%s" .Values.frontend.image.repository .Values.frontend.image.tag }}
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          image: {{ printf "%s:%s" .Values.usa-frontend.image.repository .Values.usa-frontend.image.tag }}
+          imagePullPolicy: {{ .Values.usa-frontend.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.frontend.ports.containerPort }}
+            - containerPort: {{ .Values.usa-frontend.ports.containerPort }}
           env:
             - name: AUTH_SERVICE_ADDR
               value: {{ printf "%s.%s%s" .Release.Name .Values.global.domain .Values.env.salonService.apiEntryPoint }}

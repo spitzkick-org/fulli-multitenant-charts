@@ -8,11 +8,11 @@ metadata:
     stage: production
     owner: spitzkick
 spec:
-  type: {{ .Values.appointmentService.service.type }}
+  type: {{ .Values.appointment.service.type }}
   ports:
-    - name: {{ .Values.appointmentService.service.name }}
-      port: {{ .Values.appointmentService.service.port }}
-      targetPort: {{ .Values.appointmentService.ports.containerPort }}
+    - name: {{ .Values.appointment.service.name }}
+      port: {{ .Values.appointment.service.port }}
+      targetPort: {{ .Values.appointment.ports.containerPort }}
   selector:
     app: appointment-api-instance
     stage: production
@@ -46,10 +46,10 @@ spec:
     spec:
       containers:
         - name: appointment-api-instance-container #Container name which is running in the Pod
-          image: {{ printf "%s:%s" .Values.appointmentService.image.repository .Values.appointmentService.image.tag }}
-          imagePullPolicy: {{ .Values.appointmentService.image.pullPolicy }}
+          image: {{ printf "%s:%s" .Values.appointment.image.repository .Values.appointment.image.tag }}
+          imagePullPolicy: {{ .Values.appointment.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.appointmentService.ports.containerPort }}
+            - containerPort: {{ .Values.appointment.ports.containerPort }}
           env:
             - name: DB_HOST
               value: {{ .Values.env.salonServiceDb.dbHost }}

@@ -6,14 +6,6 @@ env:
   frontendService:
     addr: spitzkickhome
     port: 80
-  grafanaService:
-    addr: grafana
-    apiEntryPoint: /grafana
-    port: 80
-  prometheusService:
-    addr: 	prometheus
-    apiEntryPoint: /prometheus
-    port: 9090
 
 global:
   replicas: 1

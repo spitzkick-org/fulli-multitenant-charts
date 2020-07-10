@@ -15,6 +15,12 @@ spec:
       route:
         - destination:
             host: {{ printf "authservice.%s.svc.cluster.local" .Release.Name }}
+    - match:
+        - uri:
+            prefix: /grafana
+        route:
+          - destination:
+              host: {{ printf "authservice.%s.svc.cluster.local" .Release.Name }}
     - route:
         - destination:
             host: {{ printf "spitzkickhome.%s.svc.cluster.local" .Release.Name }}

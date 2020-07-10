@@ -20,7 +20,13 @@ spec:
             prefix: {{ .Values.env.grafanaService.apiEntryPoint }}
         route:
           - destination:
-              host: {{ printf "grafanaService.%s.svc.cluster.local" .Release.Name }}
+              host: {{ printf "prometheus-grafana.%s.svc.cluster.local" .Release.Name }}
+    - match:
+        - uri:
+            prefix: {{ .Values.env.prometheusService.apiEntryPoint }}
+        route:
+          - destination:
+              host: {{ printf "prometheus-prometheus.%s.svc.cluster.local" .Release.Name }}
     - route:
         - destination:
             host: {{ printf "spitzkickhome.%s.svc.cluster.local" .Release.Name }}

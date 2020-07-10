@@ -15,18 +15,6 @@ spec:
       route:
         - destination:
             host: {{ printf "authservice.%s.svc.cluster.local" .Release.Name }}
-    - match:
-        - uri:
-            prefix: {{ .Values.env.grafanaService.apiEntryPoint }}
-        route:
-          - destination:
-              host: {{ printf "grafana.%s.svc.cluster.local" .Release.Name }}
-    - match:
-        - uri:
-            prefix: {{ .Values.env.prometheusService.apiEntryPoint }}
-        route:
-          - destination:
-              host: {{ printf "prometheus.%s.svc.cluster.local" .Release.Name }}
     - route:
         - destination:
             host: {{ printf "spitzkickhome.%s.svc.cluster.local" .Release.Name }}

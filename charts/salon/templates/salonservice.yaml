@@ -58,7 +58,9 @@ spec:
             - name: DB_USERNAME
               value: {{ .Values.env.salonServiceDb.dbUser }}
             - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: bitnami-postgresql-creds
-                  key: POSTGRESQL_PASSWORD
+              value: {{ .Values.env.salonServiceDb.dbPassword }}
+#            - name: DB_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: bitnami-postgresql-creds
+#                  key: POSTGRESQL_PASSWORD

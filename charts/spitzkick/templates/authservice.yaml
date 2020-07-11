@@ -12,17 +12,6 @@ spec:
       port: {{ .Values.authService.service.port }}
       targetPort: {{ .Values.authService.ports.containerPort }}
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Release.Name }}-auth-config
-  namespace: {{ .Release.Name }}
-data:
-  config.json: |-
-    {
-      "test":"test"
-    }
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -54,12 +43,11 @@ spec:
           command:
             - chown
             - -R
-            - 1000:1000
+            - a+rwX
             - /usr/src/app/dist/gitrepo
           volumeMounts:
             - name: {{ .Release.Name }}-auth-volume
               mountPath: /usr/src/app/dist/gitrepo
       volumes:
         - name: {{ .Release.Name }}-auth-volume
-          configMap:
-            name: {{ .Release.Name }}-auth-config
+          emptyDir: {}

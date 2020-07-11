@@ -20,6 +20,7 @@ metadata:
 data:
   config.json: |-
     {
+      "test":"test"
     }
 ---
 apiVersion: apps/v1
@@ -50,10 +51,10 @@ spec:
             limits:
               cpu: {{ .Values.authService.resources.limits.cpu }}
               memory: {{ .Values.authService.resources.limits.memory }}
-      volumeMounts:
+          volumeMounts:
+            - name: {{ .Release.Name }}-auth-volume
+              mountPath: /usr/src/app/dist/gitrepo
+      volumes:
         - name: {{ .Release.Name }}-auth-volume
-          mountPath: /usr/src/app/dist/gitrepo
-    volumes:
-      - name: {{ .Release.Name }}-auth-volume
-        configMap:
-          name: {{ .Release.Name }}-auth-config
+          configMap:
+            name: {{ .Release.Name }}-auth-config

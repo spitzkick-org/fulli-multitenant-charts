@@ -41,7 +41,7 @@ spec:
               cpu: {{ .Values.authService.resources.limits.cpu }}
               memory: {{ .Values.authService.resources.limits.memory }}
           command:
-            - chown
+            - chmod
             - -R
             - a+rwX
             - /usr/src/app/dist/gitrepo

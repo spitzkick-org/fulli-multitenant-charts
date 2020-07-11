@@ -18,19 +18,4 @@ spec:
     - route:
         - destination:
             host: {{ printf "spitzkickhome.%s.svc.cluster.local" .Release.Name }}
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: {{ .Release.Name }}-grafana-vs-ingress
-  namespace: default
-spec:
-  hosts:
-    - {{ printf "grafana.%s" .Values.global.domain }}
-  gateways:
-    - spitzkick-gateway
-  http:
-    - route:
-        - destination:
-            host: {{ printf "prometheus-grafana.%s.svc.cluster.local" .Release.Name }}
 

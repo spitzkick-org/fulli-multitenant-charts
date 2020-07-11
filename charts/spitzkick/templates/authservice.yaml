@@ -51,6 +51,11 @@ spec:
             limits:
               cpu: {{ .Values.authService.resources.limits.cpu }}
               memory: {{ .Values.authService.resources.limits.memory }}
+          command:
+            - chown
+            - -R
+            - 1000:1000
+            - /usr/src/app/dist/gitrepo
           volumeMounts:
             - name: {{ .Release.Name }}-auth-volume
               mountPath: /usr/src/app/dist/gitrepo

@@ -12,41 +12,16 @@ spec:
       port: {{ .Values.authService.service.port }}
       targetPort: {{ .Values.authService.ports.containerPort }}
 ---
-{{/*apiVersion: networking.istio.io/v1alpha3*/}}
-{{/*kind: ServiceEntry*/}}
-{{/*metadata:*/}}
-{{/*  name: googleapis*/}}
-{{/*  namespace: {{ .Release.Name }}*/}}
-{{/*spec:*/}}
-{{/*  hosts:*/}}
-{{/*    - www.googleapis.com*/}}
-{{/*  ports:*/}}
-{{/*    - number: 443*/}}
-{{/*      name: https*/}}
-{{/*      protocol: HTTPS*/}}
-{{/*  location: MESH_EXTERNAL*/}}
-{{/*  resolution: DNS*/}}
-{{/*---*/}}
-{{/*apiVersion: networking.istio.io/v1alpha3*/}}
-{{/*kind: VirtualService*/}}
-{{/*metadata:*/}}
-{{/*  name: googleapis*/}}
-{{/*  namespace: default*/}}
-{{/*spec:*/}}
-{{/*  hosts:*/}}
-{{/*    - www.googleapis.com*/}}
-{{/*  tls:*/}}
-{{/*    - match:*/}}
-{{/*        - port: 443*/}}
-{{/*          sni_hosts:*/}}
-{{/*            - www.googleapis.com*/}}
-{{/*      route:*/}}
-{{/*        - destination:*/}}
-{{/*            host: www.googleapis.com*/}}
-{{/*            port:*/}}
-{{/*              number: 443*/}}
-{{/*          weight: 100*/}}
-{{/*---*/}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-auth-config
+  namespace: {{ .Release.Name }}
+data:
+  config.json: |-
+    {
+    }
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -75,3 +50,10 @@ spec:
             limits:
               cpu: {{ .Values.authService.resources.limits.cpu }}
               memory: {{ .Values.authService.resources.limits.memory }}
+      volumeMounts:
+        - name: {{ .Release.Name }}-auth-volume
+          mountPath: /usr/src/app/dist/gitrepo
+    volumes:
+      - name: {{ .Release.Name }}-auth-volume
+        configMap:
+          name: {{ .Release.Name }}-auth-config

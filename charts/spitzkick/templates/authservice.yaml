@@ -12,22 +12,6 @@ spec:
       port: {{ .Values.authService.service.port }}
       targetPort: {{ .Values.authService.ports.containerPort }}
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: auth-pv-claim
-  namespace: {{ .Release.Name }}
-  labels:
-    app: auth-pv-claim
-    stage: production
-    owner: spitzkick
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -56,10 +40,3 @@ spec:
             limits:
               cpu: {{ .Values.authService.resources.limits.cpu }}
               memory: {{ .Values.authService.resources.limits.memory }}
-          volumeMounts:
-            - mountPath: /usr/src/app/dist/gitrepo
-              name: auth-pv
-      volumes:
-        - name: auth-pv
-          persistentVolumeClaim:
-            claimName: auth-pv-claim
